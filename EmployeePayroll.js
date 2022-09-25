@@ -1,17 +1,14 @@
 class EmployeePayrollData{
     //property
     id;
-    #name;
+    name;
     salary;
-    gender;
-    startDate;
-
-    constructor(id, name, salary,gender,startDate){
+    
+    constructor(id, name, salary){
         this.id = id;
         this.name = name;
         this.salary = salary;
-        this.gender = gender;
-        this.startDate = startDate;
+        
     }
     //getter setter
     get id(){
@@ -32,18 +29,7 @@ class EmployeePayrollData{
     set salary(salary){
         this.salary = salary;
     }
-    get gender(){
-        return this.gender;
-    }
-    set gender(gender){
-        this.gender = gender;
-    }
-    get startDate(){
-        return this.startDate;
-    }
-    set startDate(startDate){
-        this.startDate = startDate;
-    }
+    
 
     // Method
     toString() {
