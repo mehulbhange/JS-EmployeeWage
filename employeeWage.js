@@ -43,6 +43,9 @@ while (empWorkingHrs <= MAX_WORKING_HRS && empWorkingDays < NUM_OF_WORKING_DAYS)
             day : empWorkingDays,
             hours : empHrs,
             wage : calculateDailyWage(empHrs),
+            toString() {
+                return "\nDay : " + this.day + "  Hours Worked: " + this.hours + "  Wage Earned: " + this.wage
+            }
         }
     )
 }
@@ -113,4 +116,24 @@ console.log("Full working days : " + fullWorkingDays);
 console.log("Part working days : " + partWorkingDays);
 console.log("Non working days : " + nonWorkingDays);
 
-console.log(employeeWageObjects);
+// Calc total Wage and total hours worked
+let totalWageEarned = employeeWageObjects.filter(empWage => empWage.wage > 0)
+                    .reduce((total, empWage) => total += empWage.wage, 0);
+
+let totalHoursWorked = employeeWageObjects.filter(empHr => empHr.hours > 0)
+                    .reduce((total, empHr) => total += empHr.hours, 0);
+
+console.log("Total Wage : " + totalWageEarned + " Total Hours Worked : " + totalHoursWorked);
+
+//Show the full workings days using foreach
+employeeWageObjects.filter( (emp) => emp.hours == 8).forEach( (emp) => {console.log(emp.day) });
+
+//Show Part working days using Map by reducing to String Array
+let partWorkingDays1 = employeeWageObjects.filter(emp => emp.hours == 4)
+                                            .map(emp => emp.toString());
+console.log("Part Working Days " + partWorkingDays1);
+
+//No working days only using Map function
+let nonWorkingDays1= employeeWageObjects.filter(emp => emp.hours == 0)
+                                        .map(emp => emp.day);
+console.log("Non Woking Days " + nonWorkingDays1);
