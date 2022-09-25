@@ -1,32 +1,48 @@
 class EmployeePayrollData{
     //property
     id;
-    name;
+    #name;
     salary;
+    gender;
+    startDate;
 
-    constructor(id, name, salary){
+    constructor(id, name, salary,gender,startDate){
         this.id = id;
         this.name = name;
         this.salary = salary;
+        this.gender = gender;
+        this.startDate = startDate;
     }
     //getter setter
-    get getId(){
+    get id(){
         return this.id;
     }
-    set setId(id){
+    set id(id){
         this.id = id;
     }
-    get getName(){
+    get name(){
         return this.name;
     }
-    set setName(name){
+    set name(name){
         this.name = name;
     }
-    get getSalary(){
+    get salary(){
         return this.salary;
     }
-    set setSalary(salary){
+    set salary(salary){
         this.salary = salary;
+    }
+    get gender(){
+        return this.gender;
+    }
+    set gender(gender){
+        this.gender = gender;
+    }
+    get startDate(){
+        return this.startDate;
+    }
+    set startDate(startDate){
+        this.startDate = startDate;
     }
 
     // Method
@@ -37,5 +53,5 @@ class EmployeePayrollData{
 
 let employeePayrollData = new EmployeePayrollData(101, "Mark", 30000);
 console.log(employeePayrollData.toString());
-employeePayrollData.setName="John";
+employeePayrollData.name="John";
 console.log(employeePayrollData.toString());
