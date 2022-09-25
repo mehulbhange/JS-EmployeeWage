@@ -9,6 +9,7 @@ const MAX_WORKING_HRS = 160;
 
 let employeeDailyWage = new Array();
 let employeeDailyWageMap = new Map();
+let employeeDailyHoursMap = new Map();
 
 function getWorkingHours(empCheck){
     switch (empCheck) {
@@ -35,6 +36,7 @@ while (empWorkingHrs <= MAX_WORKING_HRS && empWorkingDays < NUM_OF_WORKING_DAYS)
     empWorkingHrs += empHrs;
     employeeDailyWage.push(calculateDailyWage(empHrs));
     employeeDailyWageMap.set(empWorkingDays, calculateDailyWage(empHrs));
+    employeeDailyHoursMap.set(empWorkingDays, empHrs);
 }
 
 //UC7 A - Calc total Wage using Array forEach or reduce method
@@ -78,3 +80,27 @@ for(let wage of employeeDailyWageMap.values()){
     totalWage += wage;
 }
 console.log("Total employee wage : "+ totalWage);
+
+let totalHrsWorked = 0;
+for(let hrs of employeeDailyHoursMap.values()){
+    totalHrsWorked += hrs;
+}
+console.log("Total hours worked : "+totalHrsWorked);
+
+// Show the full workings days, part working days and no working days
+let nonWorkingDays = new Array();
+let partWorkingDays = new Array();
+let fullWorkingDays = new Array();
+
+employeeDailyHoursMap.forEach((value, key) => {
+    if (value == 8)
+        fullWorkingDays.push(key);
+    else if (value == 4)
+        partWorkingDays.push(key);
+    else
+        nonWorkingDays.push(key);
+});
+
+console.log("Full working days : " + fullWorkingDays);
+console.log("Part working days : " + partWorkingDays);
+console.log("Non working days : " + nonWorkingDays);
