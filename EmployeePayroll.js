@@ -17,31 +17,36 @@ class EmployeePayrollData{
     get id(){
         return this.id;
     }
-    set id(id){
+    set setId(id){
         this.id = id;
     }
     get name(){
         return this.name;
     }
-    set name(name){
-        this.name = name;
+    set setName(name){
+        let nameRegex = new RegExp('^[A-Z]{1}[a-z]{2,}$');
+        if (nameRegex.test(name)){
+            this.name = name;
+        }else{
+            throw "Invalid name";
+        }
     }
     get salary(){
         return this.salary;
     }
-    set salary(salary){
+    set setSalary(salary){
         this.salary = salary;
     }
     get gender(){
         return this.gender;
     }
-    set gender(gender){
+    set setGender(gender){
         this.gender = gender;
     }
     get startDate(){
         return this.startDate;
     }
-    set startDate(startDate){
+    set setStartDate(startDate){
         this.startDate = startDate;
     }
 
@@ -54,5 +59,11 @@ class EmployeePayrollData{
 let employeePayrollData = new EmployeePayrollData(101, "Mark", 30000);
 console.log(employeePayrollData.toString());
 
+try{
+    employeePayrollData.setName="jonh";
+}catch(e){
+    console.error(e);
+}
+console.log(employeePayrollData.toString());
 let newEmployeePayrollData = new EmployeePayrollData(1, "Terisa", 30000, "F", new Date());
 console.log(newEmployeePayrollData.toString());
