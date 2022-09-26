@@ -24,7 +24,7 @@ class EmployeePayrollData{
         return this.name;
     }
     set setName(name){
-        let nameRegex = new RegExp('^[A-Z]{1}[a-z]{2,}$');
+        let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
         if (nameRegex.test(name)){
             this.name = name;
         }else{
